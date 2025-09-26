@@ -1,0 +1,23 @@
+git commit
+adds staged changes you want to commit and creates a snapshot of those.
+
+git branch
+a parallel working copy of code to main branch
+
+git checkout
+switch branches
+
+git pull
+pulls code from repository and puts that same into your current branch
+
+git push
+pushes current local code to repository branch
+
+git merge
+merge two branches
+
+git rebase
+moves line of commits to a different spot
+
+git fetch
+gets repo code and puts it into origin that is local
