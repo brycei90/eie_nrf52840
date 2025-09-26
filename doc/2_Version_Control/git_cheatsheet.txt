@@ -12,6 +12,8 @@ pulls code from repository and puts that same into your current branch
 
 git push
 pushes current local code to repository branch
+-u <branch> 
+necessary for first commit in a new branch
 
 git merge
 merge two branches
@@ -21,3 +23,13 @@ moves line of commits to a different spot
 
 git fetch
 gets repo code and puts it into origin that is local
+
+git add
+adds all unstaged changed files
+
+git status
+checks the unstaged changed files
+
+git log 
+can check commit history of each commit
+
