@@ -27,6 +27,7 @@ gets repo code and puts it into origin that is local
 git add
 adds all unstaged changed files
 
+
 git status
 checks the unstaged changed files
 
