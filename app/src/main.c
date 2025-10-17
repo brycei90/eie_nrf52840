@@ -1,6 +1,6 @@
 /*
-* main.c
-*/
+ * main.c
+ */
 
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
@@ -13,25 +13,33 @@ static const struct gpio_dt_spec button = GPIO_DT_SPEC_GET(SW0_NODE, gpios);
 
 static struct gpio_callback button_isr_data;
 
-void button_isr(const struct device *dev, struct gpio_callback *cb, uint32_t pins){
-    printk("button 0 pressed!\n");
+void button_isr(const struct device *dev, struct gpio_callback *cb, uint32_t pins) {
+    printk("Button 0 pressed!\n");
 }
 
 int main(void) {
     int ret;
 
-    if(!gpio_is_ready_dt(&button))
+    if (!gpio_is_ready_dt(&button)) {
         return 0;
-    
+    }
+
     ret = gpio_pin_configure_dt(&button, GPIO_INPUT);
-    if(0 > ret)
+    if (ret < 0) {
         return 0;
+    }
+
+    ret = gpio_pin_interrupt_configure_dt(&button, GPIO_INT_EDGE_TO_ACTIVE);
+    if (ret < 0) {
+        return 0;
+    }
 
     gpio_init_callback(&button_isr_data, button_isr, BIT(button.pin));
     gpio_add_callback(button.port, &button_isr_data);
 
-    while(1) {
-
+    while (1) {
+        k_sleep(K_FOREVER);
     }
-  	return 0;
+
+    return 0;
 }
