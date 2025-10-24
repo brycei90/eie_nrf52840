@@ -4,6 +4,8 @@
 
 #include <inttypes.h>
 
+#include <inttypes.h>
+
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
@@ -13,7 +15,7 @@
 #include "LED.h"
 #include "my_state_machine.h"
 
-#define SLEEP_MS 10
+#define SLEEP_MS 1
 
 int main(void) {
     
@@ -37,4 +39,12 @@ int main(void) {
     }
     
     return 0;
+  if (0 > LED_init()) {
+    return 0;
+  }
+
+  while(1) {
+    k_msleep(SLEEP_MS);
+  }
+	return 0;
 }
