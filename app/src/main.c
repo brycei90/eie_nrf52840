@@ -13,28 +13,28 @@
 #include "LED.h"
 #include "my_state_machine.h"
 
-#define SLEEP_MS 1
+#define SLEEP_MS 10
 
-int main(void){
-   
+int main(void) {
+    
+    //int count = 0;
+
     if(0 > BTN_init()){
         return 0;
     }
-    if (0 > LED_init()){
+    if(0 > LED_init()){
         return 0;
     }
 
     state_machine_init();
 
-    while(1){
-
-        int ret = state_machine_run();
+    while (1) {
+        int ret = state_machine_init();
         if(0 > ret){
             return 0;
         }
-       
+        k_msleep(SLEEP_MS);              
     }
-     k_msleep(SLEEP_MS);
-
+    
     return 0;
 }
